@@ -20,6 +20,7 @@ LIBS += -LD:/anaconda/envs/pyqt/libs -lpython37 -lpython3 -lpython37_d -lpython3
 
 SOURCES += \
     acco_Log/acco_log.cpp \
+    acco_Py/acco_py_statemahine.cpp \
     acco_Py/acco_pymodule.cpp \
     main.cpp \
     acco_GUI/acco_mainwindow.cpp
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     acco_GUI/acco_mainwindow.h \
     acco_Log/acco_log.h \
+    acco_Py/acco_py_statemahine.h \
     acco_Py/acco_pymodule.h
 
 FORMS += \
