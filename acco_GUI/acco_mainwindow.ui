@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ACCO_Mainwindow</class>
+ <widget class="QMainWindow" name="ACCO_Mainwindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ACCO_Mainwindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="Acco_Tab">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="Acco_tab1">
+       <attribute name="title">
+        <string>伴奏生成</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="InputLabel">
+            <property name="text">
+             <string>主旋律文件</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="InputLineEdit"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="InputButton">
+            <property name="text">
+             <string>加载</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="groupBox">
+            <property name="title">
+             <string>伴奏配置</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_4">
+             <item row="2" column="0">
+              <widget class="QLabel" name="InstrumentLabel">
+               <property name="text">
+                <string>乐器：</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="OutputLineEdit"/>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="TimeLabel">
+               <property name="text">
+                <string>节拍：</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="KeyLabel">
+               <property name="text">
+                <string>调式：</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QComboBox" name="KeyCombo">
+               <item>
+                <property name="text">
+                 <string>C</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="OutputLabel">
+               <property name="text">
+                <string>输出文件名：</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QComboBox" name="InstrumentCombo">
+               <item>
+                <property name="text">
+                 <string>吉他</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>古典吉他</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>电吉他</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>钢琴</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>小提琴</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>大提琴</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>爵士鼓</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="4" column="0" colspan="2">
+              <widget class="QPushButton" name="GenButton">
+               <property name="text">
+                <string>生成伴奏</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QComboBox" name="TimeCombo">
+               <item>
+                <property name="text">
+                 <string>4/4</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="1" column="0">
+           <widget class="QPushButton" name="SaveLogButton">
+            <property name="text">
+             <string>导出</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="ClearLogButton">
+            <property name="text">
+             <string>清除</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QListWidget" name="Log"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="Acco_tab2">
+       <attribute name="title">
+        <string>伴奏管理</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="1" column="0" colspan="2">
+         <widget class="QTableWidget" name="tableWidget"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="text">
+           <string>删除</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pushButton_6">
+          <property name="text">
+           <string>清理</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
