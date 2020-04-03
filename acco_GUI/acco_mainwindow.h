@@ -30,6 +30,10 @@ private:
 
     QString instrument2Eng(const QString& instrumentStr);
 
+    void DeleteOne();
+    void DeleteAll();
+    void ShowFiles();
+
 private:
     Ui::ACCO_Mainwindow *ui;
     QString inputPath;

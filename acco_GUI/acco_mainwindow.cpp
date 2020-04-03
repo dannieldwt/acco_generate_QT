@@ -13,6 +13,8 @@ ACCO_Mainwindow::ACCO_Mainwindow(QWidget *parent)
     , ui(new Ui::ACCO_Mainwindow)
 {
     ui->setupUi(this);
+    initTab1Connect();
+    initTab2Connect();
 }
 
 void ACCO_Mainwindow::initTab1Connect()
@@ -21,6 +23,13 @@ void ACCO_Mainwindow::initTab1Connect()
     connect(ui->SaveLogButton, &QPushButton::clicked, this, &ACCO_Mainwindow::saveLog);
     connect(ui->InputButton, &QPushButton::clicked, this, &ACCO_Mainwindow::loadInput);
     connect(ui->GenButton, &QPushButton::clicked, this, &ACCO_Mainwindow::gen);
+}
+
+void ACCO_Mainwindow::initTab2Connect()
+{
+    connect(ui->RefreshButton, &QPushButton::clicked, this, &ACCO_Mainwindow::ShowFiles);
+    connect(ui->DeleteAllButton, &QPushButton::clicked, this, &ACCO_Mainwindow::DeleteAll);
+    connect(ui->DeleteButton, &QPushButton::clicked, this, &ACCO_Mainwindow::DeleteOne);
 }
 
 ACCO_Mainwindow::~ACCO_Mainwindow()
@@ -126,3 +135,64 @@ QString ACCO_Mainwindow::instrument2Eng(const QString &instrumentStr)
     }
 }
 
+
+
+void ACCO_Mainwindow::DeleteOne()
+{
+    QDir rootDir(QDir::currentPath());
+    rootDir.cd("song");
+    QString fileName = ui->FileList->selectedItems().first()->text();
+    rootDir.remove(fileName + ".mid");
+    ShowFiles();
+}
+
+void ACCO_Mainwindow::DeleteAll()
+{
+    QDir rootDir(QDir::currentPath());
+    rootDir.cd("song");
+    QStringList string;
+    string<<"*";
+    QFileInfoList list = rootDir.entryInfoList(string);
+    for(unsigned int i=0; i<list.count() ;i++)
+    {
+        QFileInfo tmpFileInfo = list.at(i);
+        QString fileName = tmpFileInfo.fileName();
+        rootDir.remove(fileName);
+    }
+    ShowFiles();
+}
+
+void ACCO_Mainwindow::ShowFiles()
+{
+    QDir rootDir(QDir::currentPath());
+    rootDir.cd("song");
+    QStringList string;
+    string<<"*";
+    QFileInfoList list = rootDir.entryInfoList(string);
+    ui->FileList->clear();
+
+//    if(list.count() == 0)
+//    {
+//        QListWidgetItem *tmp = new QListWidgetItem("暂时没有伴奏");
+//        ui->FileList->addItem(tmp);
+//    }
+
+    for(unsigned int i=0; i<list.count() ;i++)
+    {
+        QFileInfo tmpFileInfo = list.at(i);
+        /*if(tmpFileInfo.isDir())
+            {
+                QIcon icon("dir.png");
+                QString fileName = tmpFileInfo.fileName();
+                QListWidgetItem *tmp = new QListWidgetItem(icon, fileName);
+                ui->FileList->addItem(tmp);
+            }
+           else */
+        if(tmpFileInfo.isFile() && tmpFileInfo.suffix() == "mid")
+        {
+            QString fileName = tmpFileInfo.baseName(); //.fileName();带后缀
+            QListWidgetItem *tmp = new QListWidgetItem(fileName);
+            ui->FileList->addItem(tmp);
+        }
+    }
+}
